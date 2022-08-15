@@ -446,3 +446,11 @@ func validate_abstraction{
 
     return (TRUE)
 end
+
+@external
+func validate_factory{
+    syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr, ecdsa_ptr : SignatureBuiltin*
+}(address : felt) -> (success : felt):
+    # TODO: how to evaluate the factory was deployed correctly
+
+end

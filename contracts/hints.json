@@ -5,6 +5,7 @@
     "PROXY": "proxy",
     "HELLO": "hello/hello",
     "ABSTRACTION": "abstraction/abstraction",
+    "FACTORY": "factory/factory",
     "MULTICALL": "multicall/multicall",
     "MULTISIG": "multisig/multisig",
     "SIGNATURE_BASIC": "multisig/signature_basic",
