@@ -4,8 +4,7 @@
     <br>
 </div>
 
-Welcome! This is an automated workshop that will explain what [account Abstraction](https://perama-v.github.io/cairo/account-abstraction)  is and how you can leverage it to create powerful custom acounts contracts.
-
+Welcome! This is an automated workshop that will explain what [account Abstraction](https://perama-v.github.io/cairo/account-abstraction) is and how you can leverage it to create powerful custom acounts contracts.
 
 ## Introduction
 
@@ -18,6 +17,7 @@ StarkNet is still in Alpha. This means that development is ongoing, and the pain
 ​
 
 ### How it works
+
 TL;DR: accounts on StarkNet are simply regular smart contracts. One caveat is that they MUST have a canonical entrypoint denoted with the selector `__execute__`.
 
 Your goal is to design account contracts that pass all the [evaluator.cairo](contracts/evaluator.cairo) checks and collect all the points available on StarkNet(Goerli).
@@ -31,19 +31,18 @@ To understand what is expected of you, execute the specified python script for e
 
 These tasks will be annotated with the comment `# ACTION ITEM <NUM>`
 
-
 ### Where am I?
 
 This workshop is the sixth in a series aimed at teaching how to build on StarkNet. Checkout out the following:
 
-|Topic|GitHub repo|
-|---|---|
-|Learn how to read Cairo code |[Cairo 101](https://github.com/starknet-edu/starknet-cairo-101)|
-|Deploy and customize an ERC721 NFT|[StarkNet ERC721](https://github.com/starknet-edu/starknet-erc721)|
-|Deploy and customize an ERC20 token|[StarkNet ERC20](https://github.com/starknet-edu/starknet-erc20)|
-|Build a cross layer application|[StarkNet messaging bridge](https://github.com/starknet-edu/starknet-messaging-bridge)|
-|Debug your Cairo contracts easily|[StarkNet debug](https://github.com/starknet-edu/starknet-debug)|
-|Design your own account contract (you are here)|[StarkNet account abstraction](https://github.com/starknet-edu/starknet-accounts)|
+| Topic                                           | GitHub repo                                                                            |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Learn how to read Cairo code                    | [Cairo 101](https://github.com/starknet-edu/starknet-cairo-101)                        |
+| Deploy and customize an ERC721 NFT              | [StarkNet ERC721](https://github.com/starknet-edu/starknet-erc721)                     |
+| Deploy and customize an ERC20 token             | [StarkNet ERC20](https://github.com/starknet-edu/starknet-erc20)                       |
+| Build a cross layer application                 | [StarkNet messaging bridge](https://github.com/starknet-edu/starknet-messaging-bridge) |
+| Debug your Cairo contracts easily               | [StarkNet debug](https://github.com/starknet-edu/starknet-debug)                       |
+| Design your own account contract (you are here) | [StarkNet account abstraction](https://github.com/starknet-edu/starknet-accounts)      |
 
 ### Providing feedback & getting help
 
@@ -59,7 +58,6 @@ Do you have a question? Join our [Discord server](https://discord.gg/QypNMzkHbc)
 ​
 Are you interested in following online workshops about learning how to dev on StarkNet? [Subscribe here](http://eepurl.com/hFnpQ5)
 
-
 ### Contributing
 
 This project can be made better and will evolve as StarkNet matures. Your contributions are welcome! Here are things that you can do to help:
@@ -67,25 +65,29 @@ This project can be made better and will evolve as StarkNet matures. Your contri
 - Create a branch with a translation to your language
 - Correct bugs if you find some
 - Add an explanation in the comments of the exercise if you feel it needs more explanation
-- Add exercises showcasing your favorite Cairo feature
+- Add exercises showcasing your favorite Cairo feature.
 
 ​
 ​
+
 ## Getting ready to work
+
 ### Step 1 - Clone the repo
+
 ```bash
 git clone https://github.com/starknet-edu/starknet-accounts
 cd starknet-accounts
 ```
+
 ### Step 2 - Set up your environment
 
 This tutorial uses the [cairo environment](https://www.cairo-lang.org/docs/quickstart.html), [starknet-devnet](https://github.com/Shard-Labs/starknet-devnet), and [starknet.py](https://github.com/software-mansion/starknet.py).
 
-***Install the cairo environment***
+**_Install the cairo environment_**
 
 Set up the environment following [these instructions](https://starknet.io/docs/quickstart.html#quickstart)
 
-***Install dependencies***
+**_Install dependencies_**
 
 ```bash
 pip3 install --upgrade -r requirements.txt
@@ -93,7 +95,7 @@ pip3 install --upgrade -r requirements.txt
 
 ### Step 3 - Set up your devnet
 
-Transactions take time to complete on [testnet](https://goerli.voyager.online) so you should develop and debug locally first. 
+Transactions take time to complete on [testnet](https://goerli.voyager.online) so you should develop and debug locally first.
 
 Let's try it out with the `hello/hello.cairo` exercise. There are no `# ACTION ITEM`s that need to be completed for this exercise and we can simply test that it works.
 
@@ -106,14 +108,14 @@ starknet-devnet --port 5000 --seed 0 --gas-price 250
 #### 2) deploy evaluator
 
 ```bash
-# NOTE: 
+# NOTE:
 # - you do not have to deploy the validator for `testnet`
 # - devnet contract details can be found in `contracts/accounts.json`
 cd contracts
 python3 evaluator.py
 ```
 
-#### 3) deploy/test hello contract 
+#### 3) deploy/test hello contract
 
 ```bash
 python3 hello/hello.py
@@ -127,7 +129,7 @@ export ACCOUNT_CACHE=false
 
 There were no `action items` for you to complete so you should see a succesfull `PAYDAY!!!` response from the devnet evaluator contract. To confirm you can check your ERC20 balance with the following `curl` where:
 
-- "contract_address" = "account.json" --> "http://localhost:5000" --> "token/TDERC20" 
+- "contract_address" = "account.json" --> "http://localhost:5000" --> "token/TDERC20"
 
 - "entry_point_selector" = felt representation of selector "balanceOf" (no change required)
 
@@ -154,19 +156,19 @@ When deploying to testnet fill out the relevant details in the `hints.json` file
     <img src="./misc/argent.png" style="width: 350px">
 </div>
 
-***ADDRESS***
+**_ADDRESS_**
 
 - From the example wallet above you can copy the address(`0x0742B5662...6476f8f`)
 - Paste the felt representation in the `hints.json` `TESTNET_ACCOUNT` -> `ADDRESS`
 - To get the felt represenation you can paste the address in this [conversion tool](https://util.turbofish.co).
 
-***PRIVATE***
+**_PRIVATE_**
 
 - Select the three vertical dots to display the wallet options
 - Select `Export private key`
 - Copy the private key from this screen and paste it in `hints.json` `TESTNET_ACCOUNT` -> `PRIVATE`.
 
-***PUBLIC***
+**_PUBLIC_**
 
 - Select the three vertical dots to display the wallet options
 - Select `View on Voyager`
@@ -175,13 +177,13 @@ When deploying to testnet fill out the relevant details in the `hints.json` file
 - Select `Decimal` query
 - Copy the public key from this screen and paste it in `hints.json` `TESNET_ACCOUNT` -> `PUBLIC`
 
-***Example `hints.json`***
+**_Example `hints.json`_**
+
 <div align="center">
     <img src="./misc/hints.png" style="width: 350px">
 </div>
 
 ### Step 5 - Accounting for fees
-
 
 Accounts on StarkNet must pay [fees](https://docs.starknet.io/docs/Fees/fee-mechanism) to cover the L1 footprint of their transaction. So the account details you enter must have Goerli ETH(~0.5 ETH) and can be funded either through the [starkgate bridge](https://goerli.starkgate.starknet.io) or [StarkNet Faucet](https://faucet.goerli.starknet.io).
 
@@ -204,8 +206,10 @@ pytest hello.py
 
 ​
 ​
+
 ## Working on the tutorial
-### Exercise 1 - [Hello](./contracts/hello) 
+
+### Exercise 1 - [Hello](./contracts/hello)
 
 Lets deploy and test the simplest account contract we can, [`hello.cairo`](contracts/hello/hello.cairo):
 
@@ -218,11 +222,13 @@ The job of an account contract is to execute arbitrary business logic on behalf 
 
 Follow the prompt and collect 100 points.
 
+​
+​
 
-​
-​
 ### Exercise 2 - [Signatures](./contracts/signatures)
+
 #### Signature 1
+
 Unlike Ethereum [EOAs](https://ethereum.org/en/developers/docs/accounts/#externally-owned-accounts-and-key-pairs), StarkNet accounts don't have a hard requirement on being managed by a public/private key pair.
 
 Account abstraction cares more about `who`(i.e. the contract address) rather than `how`(i.e. the signature).
@@ -242,7 +248,7 @@ Follow the prompt and collect 100 points.
 
 Let's couple the signing logic more succintly wtih the account:
 
-***HINT: we have not yet implemented a [nonce](https://ethereum.org/en/developers/docs/accounts/#an-account-examined)***
+**_HINT: we have not yet implemented a [nonce](https://ethereum.org/en/developers/docs/accounts/#an-account-examined)_**
 
 ```bash
 cd contracts
@@ -266,6 +272,7 @@ Follow the prompt and collect 300 points.
 
 ​
 ​
+
 ### Exercise 3 - [MultiCall](./contracts/multicall)
 
 Now that we have implemented the vanilla ECDSA signing mechanisms lets see what account abstraction can really do!
@@ -287,6 +294,7 @@ Follow the prompt and collect 500 points.
 
 ​
 ​
+
 ### Exercise 4 - [MultiSig](./contracts/multisig)
 
 A `multisig` or multiple signature wallet allows you to share security accross multiple signinging entities. You can think of them like bank vaults in that they require more than one key to unlock, or in this case authorize a transaction.
@@ -299,10 +307,12 @@ Lets implement a `2/3 multisig` account(i.e. 2 signatures are required out of a 
 cd contracts
 python3 multisig/multisig.py
 ```
+
 Follow the prompt and collect 1000 points.
 
 ​
 ​
+
 ### Exercise 5 - [Abstraction](./contracts/abstraction)
 
 As StarkNet accounts are simply contracts we can implement any signing mechanism we want. Companies like [Web3Auth](https://medium.com/toruslabs/sign-in-with-starkware-711d48f2dbbd) are using this to create `Sign-In` architectures using your StarkNet account. [JWT](https://github.com/BoBowchan/cairo-jsonwebtoken) token schems are being implemented.
@@ -317,7 +327,3 @@ python3 abstraction/abstraction.py
 ```
 
 Follow the prompt and collect 2000 points.
-
-
-
-
